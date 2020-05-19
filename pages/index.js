@@ -1,18 +1,16 @@
-import Head from 'next/head'
+import Head from "next/head";
 
 const Home = () => (
   <div className="container">
     <Head>
-      <title>Create Next App</title>
+      <title>John Stringer</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
     <main>
-      <h1 className="title">
-        Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      <h1 className="title">Website in reconstruction</h1>
 
-      <p className="description">
+      {/* <p className="description">
         Get started by editing <code>pages/index.js</code>
       </p>
 
@@ -44,10 +42,10 @@ const Home = () => (
             Instantly deploy your Next.js site to a public URL with Vercel.
           </p>
         </a>
-      </div>
+      </div> */}
     </main>
 
-    <footer>
+    {/* <footer>
       <a
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
         target="_blank"
@@ -55,7 +53,7 @@ const Home = () => (
       >
         Powered by <img src="/vercel.svg" alt="Vercel Logo" />
       </a>
-    </footer>
+    </footer> */}
 
     <style jsx>{`
       .container {
@@ -198,6 +196,6 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+export default Home;
