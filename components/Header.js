@@ -57,6 +57,18 @@ const HeaderStyled = styled.header`
     margin: 0 auto;
     padding: 30px;
   }
+  @media only screen and (max-width: 1200px) {
+    .name {
+      display: none;
+    }
+
+    .menu-container {
+      max-width: 780px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 30px;
+    }
+  }
 `;
 
 export default Header;
