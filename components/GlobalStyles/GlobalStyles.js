@@ -17,11 +17,12 @@ const GlobalStyles = () => (
         body.light-mode {
           background-color: #f5f5f5;
           color: #212121;
-          transition: background-color 1s ease;
+          transition: background-color 0.8s ease;
         }
         body.dark-mode {
           background-color: #212121;
           color: #f5f5f5;
+          transition: background-color 0.8s ease;
         }
         .container {
           max-width: 780px;
@@ -32,12 +33,23 @@ const GlobalStyles = () => (
         a {
           :hover {
             color: #fe346e;
-            transition: color 1s ease;
+            transition: color 0.3s ease;
           }
         }
         h1 {
           font-size: ${rem(40)};
           font-weight: 600;
+        }
+        span {
+          color: #fe346e;
+        }
+        li {
+          :active {
+            color: #fe346e;
+          }
+        }
+        .active {
+          color: #fe346e;
         }
       `}
     />

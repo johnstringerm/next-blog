@@ -5,13 +5,16 @@ const Home = () => (
   <div className="container flex-grow">
     <div className="about-container md:flex">
       <div className="about-text">
-        <h1>Hello 👋</h1>
+        <h1>
+          Hi, I'm <span>John</span> 👋
+        </h1>
         <div className="text-space">
-          I'm a creative junior frontend web developer based in the South West.
+          I'm a creative frontend <span>developer</span> based in the South
+          West.
         </div>
         <div className="text-space">
-          I've recently graduated from Plymouth University after studying
-          Internet Design.
+          I've recently graduated from <span>Plymouth University</span> after
+          studying <span>Internet Design</span>.
         </div>
         <div>
           Outside of web development, I love to travel and eat great food

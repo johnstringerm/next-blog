@@ -1,30 +1,41 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 import DarkModeToggle from "components/DarkModeToggle";
+import { useRouter } from "next/router";
+import Link from "components/Link";
 
 const Header = ({ isDark }) => {
+  const router = useRouter();
   return (
     <HeaderStyled isDark={isDark}>
-      <div className="parent">
-        <a className="name">John Stringer</a>
+      <a className="name">John Stringer</a>
 
-        <div className="menu-container">
+      <div className="parent">
+        <div className="container">
           <ul className="menu">
             <li className="menu">
-              <a href="/">About</a>
+              <Link activeClassName="active" href="/">
+                <a>About</a>
+              </Link>
             </li>
             <li className="menu">
-              <a href="/resume">Resume</a>
+              <Link activeClassName="active" href="/resume">
+                <a>Resume</a>
+              </Link>
             </li>
             <li className="menu">
-              <a href="/projects">Projects</a>
+              <Link activeClassName="active" href="/projects">
+                <a>Projects</a>
+              </Link>
             </li>
             <li className="menu">
-              <a href="/blog">Blog</a>
+              <Link activeClassName="active" href="/blog">
+                <a>Blog</a>
+              </Link>
             </li>
+            <DarkModeToggle />
           </ul>
         </div>
-        <DarkModeToggle />
       </div>
     </HeaderStyled>
   );
@@ -42,7 +53,7 @@ const HeaderStyled = styled.header`
   .name {
     font-size: ${rem(22)};
     font-weight: 600;
-    display: inline;
+    position: absolute;
     padding: 30px 0 0 30px;
     margin-left: 30px;
   }
@@ -67,6 +78,24 @@ const HeaderStyled = styled.header`
       width: 100%;
       margin: 0 auto;
       padding: 30px;
+    }
+
+    .nav {
+      display: grid;
+      grid-template-rows: minmax(min-content, 100px) min-content;
+    }
+
+    .content {
+      display: grid;
+      place-items: center;
+      grid-auto-flow: column;
+      align-content: space-evenly;
+    }
+
+    .links {
+      display: grid;
+      grid-gap: 15px;
+      grid-auto-flow: column;
     }
   }
 `;
