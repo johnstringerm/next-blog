@@ -1,4 +1,4 @@
-import PicOfMe from "../assets/me.png";
+import PicOfMe from "../assets/me.svg";
 import { rem } from "polished";
 
 const Home = () => (

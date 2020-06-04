@@ -17,7 +17,7 @@ const GlobalStyles = () => (
         body.light-mode {
           background-color: #f5f5f5;
           color: #212121;
-          transition: background-color 0.3s ease;
+          transition: background-color 1s ease;
         }
         body.dark-mode {
           background-color: #212121;
@@ -32,7 +32,7 @@ const GlobalStyles = () => (
         a {
           :hover {
             color: #fe346e;
-            transition: color 0.3s ease;
+            transition: color 1s ease;
           }
         }
         h1 {
