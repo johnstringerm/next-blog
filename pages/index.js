@@ -27,7 +27,6 @@ const Home = () => (
     <style jsx>{`
       #image {
         height: ${rem(400)};
-        padding: ${rem(10)};
       }
       .text-space {
         margin-bottom: ${rem(20)}
