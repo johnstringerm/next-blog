@@ -33,7 +33,9 @@ const Header = ({ isDark }) => {
                 <a>Blog</a>
               </Link>
             </li>
-            <DarkModeToggle />
+            <div className="toggle">
+              <DarkModeToggle />
+            </div>
           </ul>
         </div>
       </div>
@@ -42,21 +44,20 @@ const Header = ({ isDark }) => {
 };
 
 const HeaderStyled = styled.header`
-  /* padding: 20px; */
-
   ul {
     display: flex;
     justify-content: space-between;
 
     li {
-      /* display: inline; */
       display: inline;
-      /* margin-right: ${rem(25)}; */
       font-size: ${rem(20)};
     }
   }
 
-  .menu {
+  .toggle {
+    width: 30%;
+    /* margin-left: auto; */
+    /* display: flex; */
   }
 
   .name {
