@@ -1,4 +1,3 @@
-import PicOfMe from "../assets/me.svg";
 import { rem } from "polished";
 
 const Home = () => (
@@ -16,13 +15,24 @@ const Home = () => (
           I've recently graduated from <span>Plymouth University</span> after
           studying <span>Internet Design</span>.
         </div>
-        <div>
+        <div className="text-space">
           Outside of web development, I love to travel and eat great food
           (ideally both at the same time).
         </div>
+        <div>
+          Feel free to send me an{" "}
+          <span>
+            <a href="mailto:john.stringer.martin@gmail.com">email</a>
+          </span>{" "}
+          or contact me through{" "}
+          <span>
+            <a href="https://www.linkedin.com/in/johnstringerm/">LinkedIn</a>
+          </span>
+          .
+        </div>
       </div>
 
-      <img src={PicOfMe} id="image" />
+      <img src="/me.png" id="image" />
     </div>
     <style jsx>{`
       #image {
@@ -31,6 +41,9 @@ const Home = () => (
       .text-space {
         margin-bottom: ${rem(20)}
       }
+        a:hover {
+          text-decoration: underline;
+        }
       }
     `}</style>
   </div>
