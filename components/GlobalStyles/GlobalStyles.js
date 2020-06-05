@@ -8,8 +8,15 @@ const GlobalStyles = () => (
         *,
         *:before,
         *:after {
-          font-family: inter, system-ui, -apple-system, system-ui, "Segoe UI",
+          font-family: "Inter", system-ui, -apple-system, system-ui, "Segoe UI",
             Roboto, "Helvetica Neue", sans-serif;
+        }
+        @font-face {
+          font-family: "Inter";
+          src: url("/fonts/Inter-VariableFont_slnt,wght");
+          /* font-weight: bold; */
+          /* font-style: normal; */
+          font-display: swap;
         }
         body {
           font-size: ${rem(20)};
