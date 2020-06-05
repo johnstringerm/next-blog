@@ -13,7 +13,7 @@ const Header = ({ isDark }) => {
       <div className="parent">
         <div className="container">
           <ul className="menu">
-            <li className="menu">
+            <li className="">
               <Link activeClassName="active" href="/">
                 <a>About</a>
               </Link>
@@ -42,12 +42,21 @@ const Header = ({ isDark }) => {
 };
 
 const HeaderStyled = styled.header`
-  padding: 20px;
+  /* padding: 20px; */
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      /* display: inline; */
+      display: inline;
+      /* margin-right: ${rem(25)}; */
+      font-size: ${rem(20)};
+    }
+  }
 
   .menu {
-    display: inline;
-    margin-right: ${rem(25)};
-    font-size: ${rem(20)};
   }
 
   .name {

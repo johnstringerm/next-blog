@@ -3,11 +3,11 @@ import { rem } from "polished";
 
 const Home = () => (
   <div className="container flex-grow">
+    <h1 className="text-space">
+      Hi, I'm <span>John</span> 👋
+    </h1>
     <div className="about-container md:flex">
       <div className="about-text">
-        <h1>
-          Hi, I'm <span>John</span> 👋
-        </h1>
         <div className="text-space">
           I'm a creative frontend <span>developer</span> based in the South
           West.
