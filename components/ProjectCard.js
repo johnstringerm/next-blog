@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 import Link from "next/link";
+import Moment from "react-moment";
 import { server } from "../config";
 
 const ProjectCard = ({ project }) => {
@@ -15,7 +16,9 @@ const ProjectCard = ({ project }) => {
             alt=""
           />
         )}
-        <div className="date">{project.publish_date}</div>
+        <Moment className="date" format="Do MMM YYYY">
+          {project.publish_date}
+        </Moment>
         <div className="description">{project.description}</div>
         <span className="more">Read More</span>
       </CardStyled>

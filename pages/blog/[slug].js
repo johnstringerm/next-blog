@@ -3,6 +3,7 @@ import { Box } from "reflexbox";
 import { rem } from "polished";
 import styled from "@emotion/styled";
 const ReactMarkdown = require("react-markdown");
+import Moment from "react-moment";
 import { server } from "../../config";
 
 const Blogs = ({ blog }) => {
@@ -10,7 +11,9 @@ const Blogs = ({ blog }) => {
     <Box variant="container">
       <ProjectStyled>
         <h1>{blog.title}</h1>
-        <div className="date">{blog.publish_date}</div>
+        <Moment className="date" format="Do MMM YYYY">
+          {blog.publish_date}
+        </Moment>
         <div className="description">{blog.description}</div>
         <ReactMarkdown source={blog.text_content} />
       </ProjectStyled>

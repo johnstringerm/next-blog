@@ -13,7 +13,9 @@ const Footer = ({ isDark }) => {
             <a href="https://github.com/jhnstrngr">GitHub</a>
           </li>
         </ul>
-        <div className="copyright">© 2020 John Stringer</div>
+        <div className="copyright">
+          © {new Date().getFullYear()} John Stringer
+        </div>
       </div>
     </FooterStyled>
   );

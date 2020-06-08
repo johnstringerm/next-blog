@@ -2,13 +2,16 @@ import styled from "@emotion/styled";
 import { rem } from "polished";
 import { Flex, Box } from "reflexbox";
 import Link from "next/link";
+import Moment from "react-moment";
 
 const Card = ({ blog }) => {
   return (
     <Link href="/blog/[slug]" as={`/blog/${blog.slug}`}>
       <CardStyled>
         <div className="title">{blog.title}</div>
-        <div className="date">{blog.publish_date}</div>
+        <Moment className="date" format="Do MMM YYYY">
+          {blog.publish_date}
+        </Moment>
         <div className="description">{blog.description}</div>
         <Flex justifyContent="space-between">
           <span className="more">Read More</span>

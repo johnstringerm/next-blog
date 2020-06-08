@@ -3,6 +3,7 @@ import { Flex, Box } from "reflexbox";
 import { rem } from "polished";
 import styled from "@emotion/styled";
 const ReactMarkdown = require("react-markdown");
+import Moment from "react-moment";
 import { server } from "../../config";
 
 const Project = ({ project }) => {
@@ -10,7 +11,9 @@ const Project = ({ project }) => {
     <Box variant="container">
       <ProjectStyled>
         <h1>{project.title}</h1>
-        <div className="date">{project.publish_date}</div>
+        <Moment className="date" format="Do MMM YYYY">
+          {project.publish_date}
+        </Moment>
         {project.project_banner && (
           <img
             className="image"
