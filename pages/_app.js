@@ -5,13 +5,7 @@ import Header from "../components/Header";
 import "../css/tailwind.css";
 import { ThemeProvider } from "emotion-theming";
 import GlobalStyles from "components/GlobalStyles/GlobalStyles";
-
-const theme = {
-  colors: {
-    primary: "#212121",
-    secondary: "#F5F5F5",
-  },
-};
+import theme from "../theme/theme.js";
 
 function MyApp({ Component, pageProps }) {
   return (

@@ -7,19 +7,18 @@ const Home = () => (
     </h1>
     <div className="about-container md:flex">
       <div className="about-text">
-        <div className="text-space">
-          I'm a creative frontend <span>developer</span> based in the South
-          West.
+        <div className="text-space text-top-space">
+          I'm a creative frontend developer based in the South West.
         </div>
         <div className="text-space">
-          I've recently graduated from <span>Plymouth University</span> after
-          studying <span>Internet Design</span>.
+          I've recently graduated from Plymouth University after studying
+          Internet Design.
         </div>
         <div className="text-space">
           Outside of web development, I love to travel and eat great food
           (ideally both at the same time).
         </div>
-        <div>
+        <div className="text-space">
           Feel free to send me an{" "}
           <span>
             <a href="mailto:john.stringer.martin@gmail.com">email</a>
@@ -36,10 +35,15 @@ const Home = () => (
     </div>
     <style jsx>{`
       #image {
-        height: ${rem(400)};
+        height: 100%;
+        width: 100%;
+        max-width: ${rem(400)}
       }
       .text-space {
         margin-bottom: ${rem(20)}
+      }
+      .text-top-space {
+        margin-top: ${rem(10)}
       }
         a:hover {
           text-decoration: underline;

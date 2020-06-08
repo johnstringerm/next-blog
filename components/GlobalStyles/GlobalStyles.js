@@ -13,13 +13,12 @@ const GlobalStyles = () => (
         }
         @font-face {
           font-family: "Inter";
-          src: url("/fonts/Inter-VariableFont_slnt,wght");
-          /* font-weight: bold; */
-          /* font-style: normal; */
+          src: url("/fonts/Inter-Regular-slnt=0.ttf");
           font-display: swap;
         }
         body {
           font-size: ${rem(20)};
+          line-height: ${rem(32)};
         }
         body.light-mode {
           background-color: #f5f5f5;
@@ -45,6 +44,7 @@ const GlobalStyles = () => (
         }
         h1 {
           font-size: ${rem(40)};
+          line-height: ${rem(50)};
           font-weight: 600;
         }
         span {

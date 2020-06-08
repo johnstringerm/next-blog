@@ -1,17 +1,16 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 import DarkModeToggle from "components/DarkModeToggle";
-import { useRouter } from "next/router";
 import Link from "components/Link";
+import { Flex, Box } from "reflexbox";
 
-const Header = ({ isDark }) => {
-  const router = useRouter();
+const Header = () => {
   return (
-    <HeaderStyled isDark={isDark}>
+    <HeaderStyled>
       <a className="name">John Stringer</a>
 
       <div className="parent">
-        <div className="container">
+        <Box variant="container">
           <ul className="menu">
             <li className="">
               <Link activeClassName="active" href="/">
@@ -37,7 +36,7 @@ const Header = ({ isDark }) => {
               <DarkModeToggle />
             </div>
           </ul>
-        </div>
+        </Box>
       </div>
     </HeaderStyled>
   );
@@ -56,8 +55,6 @@ const HeaderStyled = styled.header`
 
   .toggle {
     width: 30%;
-    /* margin-left: auto; */
-    /* display: flex; */
   }
 
   .name {
@@ -106,6 +103,12 @@ const HeaderStyled = styled.header`
       display: grid;
       grid-gap: 15px;
       grid-auto-flow: column;
+    }
+  }
+
+  @media only screen and (max-width: 700px) {
+    a {
+      font-size: ${rem(16)};
     }
   }
 `;

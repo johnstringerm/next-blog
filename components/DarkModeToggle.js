@@ -21,9 +21,8 @@ const DarkModeToggle = () => {
 };
 
 const DivStyled = styled.div`
-  margin-left: 100%;
   display: flex;
-  width: 100%;
+  float: right;
 `;
 
 export default DarkModeToggle;
