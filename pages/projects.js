@@ -10,6 +10,8 @@ const Projects = ({ projects, page, numberOfProjects }) => {
 
   const lastPage = Math.ceil(numberOfProjects / 3);
 
+  console.log(projects);
+
   return (
     <Box variant="container">
       {/* <div className=" "> */}
@@ -54,21 +56,25 @@ export async function getServerSideProps({ query: { page = 1 } }) {
 
   const start = +page === 1 ? 0 : (+page - 1) * 3;
 
-  const numberOfProjectsResponse = await fetch(`${API_URL}/projects/count`);
+  try {
+    const numberOfProjectsResponse = await fetch(`${API_URL}/projects/count`);
 
-  const numberOfProjects = await numberOfProjectsResponse.json();
+    const numberOfProjects = await numberOfProjectsResponse.json();
 
-  const res = await fetch(`${API_URL}/projects?_limit=3&_start=${start}`);
+    const res = await fetch(`${API_URL}/projects?_limit=3&_start=${start}`);
 
-  const data = await res.json();
+    const data = await res.json();
 
-  return {
-    props: {
-      projects: data,
-      page: +page,
-      numberOfProjects,
-    },
-  };
+    return {
+      props: {
+        projects: data,
+        page: +page,
+        numberOfProjects,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export default Projects;
