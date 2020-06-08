@@ -1,16 +1,22 @@
 import React from "react";
+import useDarkMode from "use-dark-mode";
 
-const Toggle = ({ checked, onChange }) => (
-  <span className="toggle-control">
-    <input
-      className="dmcheck"
-      type="checkbox"
-      checked={checked}
-      onChange={onChange}
-      id="dmcheck"
-    />
-    <label htmlFor="dmcheck" />
-  </span>
-);
+const Toggle = ({ checked }) => {
+  const darkMode = useDarkMode(false);
+
+  return (
+    <>
+      {checked ? (
+        <button type="button" onClick={darkMode.disable}>
+          ☀
+        </button>
+      ) : (
+        <button type="button" onClick={darkMode.enable}>
+          ☾
+        </button>
+      )}
+    </>
+  );
+};
 
 export default Toggle;

@@ -10,8 +10,7 @@ const Blog = ({ blogs, page, numberOfBlogs }) => {
   const lastPage = Math.ceil(numberOfBlogs / 3);
 
   return (
-    <Box variant="container">
-      {/* <div className="container flex-grow"> */}
+    <Box variant="container" flexGrow="1">
       <div className="">
         <h1>Blog</h1>
         {blogs.map((blog) => (
@@ -37,21 +36,11 @@ const Blog = ({ blogs, page, numberOfBlogs }) => {
           </button>
         )}
       </Flex>
-      {/* </div> */}
     </Box>
   );
 };
 
 export async function getServerSideProps({ query: { page = 1 } }) {
-  // const res = await fetch(`${server}/blogs`);
-
-  // const data = await res.json();
-
-  // return {
-  //   props: {
-  //     blogs: data,
-  //   },
-  // };
   const start = +page === 1 ? 0 : (+page - 1) * 5;
 
   const numberOfBlogsResponse = await fetch(`${server}/blogs/count`);

@@ -11,7 +11,7 @@ const Projects = ({ projects, page, numberOfProjects }) => {
   const lastPage = Math.ceil(numberOfProjects / 3);
 
   return (
-    <Box variant="container">
+    <Box variant="container" flexGrow="1">
       <ProjectsStyled>
         <h1>Projects</h1>
         {projects.map((project) => (
