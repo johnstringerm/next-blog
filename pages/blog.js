@@ -18,7 +18,7 @@ const Blog = ({ blogs }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const { API_URL } = process.env;
 
   const res = await fetch(`${API_URL}/blogs`);
