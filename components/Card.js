@@ -1,14 +1,21 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
+import { Flex, Box } from "reflexbox";
+import Link from "next/link";
 
 const Card = ({ blog }) => {
   return (
-    <CardStyled>
-      <div className="title">{blog.title}</div>
-      <div className="date">{blog.publish_date}</div>
-      <div className="description">{blog.description}</div>
-      <span className="more">Read More</span>
-    </CardStyled>
+    <Link href="/blog/[slug]" as={`/blog/${blog.slug}`}>
+      <CardStyled>
+        <div className="title">{blog.title}</div>
+        <div className="date">{blog.publish_date}</div>
+        <div className="description">{blog.description}</div>
+        <Flex justifyContent="space-between">
+          <span className="more">Read More</span>
+          <div className="type">{blog.blog_types.type}</div>
+        </Flex>
+      </CardStyled>
+    </Link>
   );
 };
 
@@ -21,6 +28,7 @@ const CardStyled = styled.div`
   :hover {
     background-color: rgba(181, 181, 181, 0.6);
     transition: background-color 0.5s ease;
+    cursor: pointer;
   }
   .title {
     font-weight: 600;
@@ -32,6 +40,18 @@ const CardStyled = styled.div`
   }
   .more {
     font-size: ${rem(18)};
+    font-weight: 600;
+  }
+  .type {
+    background-color: rgba(181, 181, 181, 1);
+    color: #212121;
+    width: 100%;
+    max-width: ${rem(110)};
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 20px;
+    font-size: ${rem(18)};
+    opacity: 0.85;
   }
 `;
 

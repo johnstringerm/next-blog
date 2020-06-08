@@ -1,25 +1,18 @@
 import fetch from "isomorphic-unfetch";
-import { Flex, Box } from "reflexbox";
+import { Box } from "reflexbox";
 import { rem } from "polished";
 import styled from "@emotion/styled";
 const ReactMarkdown = require("react-markdown");
 import { server } from "../../config";
 
-const Project = ({ project }) => {
+const Blogs = ({ blog }) => {
   return (
     <Box variant="container">
       <ProjectStyled>
-        <h1>{project.title}</h1>
-        <div className="date">{project.publish_date}</div>
-        {project.project_banner && (
-          <img
-            className="image"
-            src={server + project.project_banner.url}
-            alt=""
-          />
-        )}
-        <div className="description">{project.description}</div>
-        <ReactMarkdown source={project.text_content} />
+        <h1>{blog.title}</h1>
+        <div className="date">{blog.publish_date}</div>
+        <div className="description">{blog.description}</div>
+        <ReactMarkdown source={blog.text_content} />
       </ProjectStyled>
     </Box>
   );
@@ -48,14 +41,14 @@ const ProjectStyled = styled.div`
 export async function getServerSideProps(context) {
   const { slug } = context.query;
 
-  const res = await fetch(`${server}/projects?slug=${slug}`);
+  const res = await fetch(`${server}/blogs?slug=${slug}`);
 
   const data = await res.json();
   return {
     props: {
-      project: data[0],
+      blog: data[0],
     },
   };
 }
 
-export default Project;
+export default Blogs;

@@ -45,6 +45,7 @@ const CardStyled = styled.div`
   }
   .more {
     font-size: ${rem(18)};
+    font-weight: 600;
   }
   .image {
     padding: ${rem(2)};

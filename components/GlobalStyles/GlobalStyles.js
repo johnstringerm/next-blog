@@ -47,6 +47,16 @@ const GlobalStyles = () => (
           line-height: ${rem(50)};
           font-weight: 600;
         }
+        h2 {
+          font-size: ${rem(28)};
+          line-height: ${rem(34)};
+          font-weight: 600;
+        }
+        h3 {
+          font-size: ${rem(24)};
+          line-height: ${rem(30)};
+          font-weight: 400;
+        }
         span {
           color: #fe346e;
         }
