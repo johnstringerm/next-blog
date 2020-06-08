@@ -2,10 +2,9 @@ import fetch from "isomorphic-unfetch";
 import { Flex, Box } from "reflexbox";
 import { rem } from "polished";
 import styled from "@emotion/styled";
+import { server } from "../../config";
 
 const Project = ({ project }) => {
-  const { API_URL } = process.env;
-
   return (
     <Box variant="container">
       <ProjectStyled>
@@ -14,7 +13,7 @@ const Project = ({ project }) => {
         {project.project_banner && (
           <img
             className="image"
-            src={API_URL + project.project_banner.url}
+            src={server + project.project_banner.url}
             alt=""
           />
         )}

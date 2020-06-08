@@ -4,8 +4,6 @@ import Link from "next/link";
 import { server } from "../config";
 
 const ProjectCard = ({ project }) => {
-  const { API_URL } = process.env || "https://strapi-blog-john.herokuapp.com";
-
   return (
     <CardStyled>
       <div className="title">{project.title}</div>
