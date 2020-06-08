@@ -1,5 +1,5 @@
 import fetch from "isomorphic-unfetch";
-import Card from "components/card";
+import Card from "components/Card";
 
 const Blog = ({ blogs }) => {
   return (
