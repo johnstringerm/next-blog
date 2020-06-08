@@ -3,7 +3,7 @@ import { rem } from "polished";
 import Link from "next/link";
 
 const ProjectCard = ({ project }) => {
-  const { API_URL } = process.env || "https://strapi-blog-john.herokuapp.com";
+  const { API_URL } = "https://strapi-blog-john.herokuapp.com";
 
   return (
     <CardStyled>
