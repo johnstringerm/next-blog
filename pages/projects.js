@@ -10,8 +10,6 @@ const Projects = ({ projects, page, numberOfProjects }) => {
 
   const lastPage = Math.ceil(numberOfProjects / 3);
 
-  console.log(projects);
-
   return (
     <Box variant="container">
       <ProjectsStyled>

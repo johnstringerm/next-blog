@@ -20,8 +20,6 @@ const Blog = ({ blogs }) => {
 };
 
 export async function getStaticProps() {
-  const { API_URL } = process.env;
-
   const res = await fetch(`${server}/blogs`);
 
   const data = await res.json();
