@@ -50,8 +50,6 @@ const ProjectsStyled = styled.div`
 `;
 
 export async function getServerSideProps({ query: { page = 1 } }) {
-  const { API_URL } = process.env;
-
   const start = +page === 1 ? 0 : (+page - 1) * 3;
 
   const numberOfProjectsResponse = await fetch(`${server}/projects/count`);

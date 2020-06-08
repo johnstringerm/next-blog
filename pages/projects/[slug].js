@@ -45,11 +45,9 @@ const ProjectStyled = styled.div`
 `;
 
 export async function getServerSideProps(context) {
-  const { API_URL } = process.env;
-
   const { slug } = context.query;
 
-  const res = await fetch(`${API_URL}/projects?slug=${slug}`);
+  const res = await fetch(`${server}/projects?slug=${slug}`);
 
   const data = await res.json();
   return {
