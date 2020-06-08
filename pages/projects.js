@@ -56,25 +56,21 @@ export async function getServerSideProps({ query: { page = 1 } }) {
 
   const start = +page === 1 ? 0 : (+page - 1) * 3;
 
-  try {
-    const numberOfProjectsResponse = await fetch(`${API_URL}/projects/count`);
+  const numberOfProjectsResponse = await fetch(`${API_URL}/projects/count`);
 
-    const numberOfProjects = await numberOfProjectsResponse.json();
+  const numberOfProjects = await numberOfProjectsResponse.json();
 
-    const res = await fetch(`${API_URL}/projects?_limit=3&_start=${start}`);
+  const res = await fetch(`${API_URL}/projects?_limit=3&_start=${start}`);
 
-    const data = await res.json();
+  const data = await res.json();
 
-    return {
-      props: {
-        projects: data,
-        page: +page,
-        numberOfProjects,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-  }
+  return {
+    props: {
+      projects: data,
+      page: +page,
+      numberOfProjects,
+    },
+  };
 }
 
 export default Projects;
