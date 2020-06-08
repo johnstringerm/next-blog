@@ -1,5 +1,6 @@
 import fetch from "isomorphic-unfetch";
 import Card from "components/Card";
+import { server } from "../config";
 
 const Blog = ({ blogs }) => {
   return (
@@ -21,7 +22,7 @@ const Blog = ({ blogs }) => {
 export async function getStaticProps() {
   const { API_URL } = process.env;
 
-  const res = await fetch(`${API_URL}/blogs`);
+  const res = await fetch(`${server}/blogs`);
 
   const data = await res.json();
 

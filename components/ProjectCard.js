@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { rem } from "polished";
 import Link from "next/link";
+import { server } from "../config";
 
 const ProjectCard = ({ project }) => {
   const { API_URL } = process.env || "https://strapi-blog-john.herokuapp.com";
@@ -11,7 +12,7 @@ const ProjectCard = ({ project }) => {
       {project.project_banner && (
         <img
           className="image"
-          src={API_URL + project.project_banner.url}
+          src={server + project.project_banner.url}
           alt=""
         />
       )}
