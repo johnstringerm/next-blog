@@ -19,16 +19,4 @@ module.exports = withFonts({
   env: {
     API_URL: process.env.API_URL,
   },
-  exportPathMap: async function (
-    defaultPathMap,
-    { dev, dir, outDir, distDir, buildId }
-  ) {
-    return {
-      "/": { page: "/" },
-      "/resume": { page: "/resume" },
-      "/blog": { page: "/blog" },
-      "/projects": { page: "/projects" },
-    };
-  },
-  // withFonts();
 });

@@ -1,3 +1,4 @@
+import React from "react";
 import fetch from "isomorphic-unfetch";
 import ProjectCard from "components/ProjectCard";
 import styled from "@emotion/styled";
