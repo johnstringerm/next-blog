@@ -32,6 +32,9 @@ const FooterStyled = styled.footer`
   .menu-container {
     display: flex;
   }
+  @media only screen and (max-width: 700px) {
+    font-size: ${rem(14)};
+  }
 `;
 
 export default Footer;
