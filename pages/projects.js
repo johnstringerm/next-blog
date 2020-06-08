@@ -48,8 +48,8 @@ const ProjectsStyled = styled.div`
   }
 `;
 
-export async function getStaticProps({ query: { page = 1 } }) {
-  const { API_URL } = process.env;
+export async function getServerSideProps({ query: { page = 1 } }) {
+  const { API_URL } = process.env || "https://strapi-blog-john.herokuapp.com";
 
   const start = +page === 1 ? 0 : (+page - 1) * 3;
 
