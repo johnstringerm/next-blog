@@ -14,13 +14,13 @@ const Project = ({ project }) => {
         <Moment className="date" format="Do MMM YYYY">
           {project.publish_date}
         </Moment>
-        {project.project_banner && (
+        {/* {project.project_banner && (
           <img
             className="image"
             src={server + project.project_banner.url}
             alt=""
           />
-        )}
+        )} */}
         <div className="description">{project.description}</div>
         <ReactMarkdown source={project.text_content} />
       </ProjectStyled>

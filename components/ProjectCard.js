@@ -9,13 +9,13 @@ const ProjectCard = ({ project }) => {
     <Link href="/projects/[slug]" as={`/projects/${project.slug}`}>
       <CardStyled>
         <div className="title">{project.title}</div>
-        {project.project_banner && (
+        {/* {project.project_banner && (
           <img
             className="image"
             src={server + project.project_banner.url}
             alt=""
           />
-        )}
+        )} */}
         <Moment className="date" format="Do MMM YYYY">
           {project.publish_date}
         </Moment>
