@@ -8,7 +8,7 @@ import { server } from "../../config";
 
 const Blogs = ({ blog }) => {
   return (
-    <Box variant="container">
+    <Box variant="container" flexGrow="1">
       <ProjectStyled>
         <h1>{blog.title}</h1>
         <Moment className="date" format="Do MMM YYYY">

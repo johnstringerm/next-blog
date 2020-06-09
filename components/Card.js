@@ -53,7 +53,7 @@ const CardStyled = styled.div`
     text-align: center;
     vertical-align: middle;
     border-radius: 20px;
-    font-size: ${rem(18)};
+    font-size: ${rem(16)};
     opacity: 0.85;
   }
 `;
