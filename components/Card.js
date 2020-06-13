@@ -5,6 +5,7 @@ import Link from "next/link";
 import Moment from "react-moment";
 
 const Card = ({ blog }) => {
+  console.log(blog);
   return (
     <Link href="/blog/[slug]" as={`/blog/${blog.slug}`}>
       <CardStyled>
