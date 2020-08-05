@@ -5,17 +5,13 @@ updatedAt: 2020-06-08
 hero_image: /projects/harpy.png
 ---
 
-![](https://res.cloudinary.com/db9egliyk/image/upload/v1591629647/harpy-screenshot_mai3ao.png)  
-
-  &nbsp;
+![](https://res.cloudinary.com/db9egliyk/image/upload/v1591629647/harpy-screenshot_mai3ao.png)
 
 A website with more information is available at [www.harpy.app](https://www.harpy.app)
 
   &nbsp;
 
 ## What does it do?
-
-  &nbsp;
 
 Harpy is a mobile app designed to improve your sleep by sending you useful notifications throughout the day to make sure you make the right steps to getting a better night of sleep.
 
@@ -55,22 +51,16 @@ Below are videos of the main app screen and the onboarding process. Press the im
 
 ## Why?
 
-  &nbsp;
-
 I wanted to make a digital wellbeing app that focused on proactively improving users sleeping patterns. So I decided to apply sleep based research to my app in order to tackle developing a sleep assisting app in a unique approach.
 
   &nbsp;
 
 ## How to test the app
 
-  &nbsp;
-
 Although the app is designed to work on both iOS and Android, because of restrictions set by iOS to pay for annual licenses to test apps the app is only available to test on Android using the Expo app. Once you have the Expo app, just scan the QR code in the following link [expo.io/@johnsm/harpy](https://expo.io/@johnsm/harpy).
 
   &nbsp;
 
 ## Technologies used
-
-  &nbsp;
 
 I designed the app using Figma, a component-based interface design tool. I then made the front-end of the app using Expo a React Native based toolchain that helped me to bootstrap and test the application when I was developing it a lot faster. For the backend I use Firebase for user authentication as well as a database to store user data. I also use Firebase for it's Cloud Function to run a cronjob every minute to check for pending user notifications. Firebase was useful to help speed up the development of the backend and because it also runs for free, even with a cronjob running every minute.
