@@ -12,6 +12,10 @@ module.exports = withFonts({
         outputPath: "images",
       },
     });
+    config.module.rules.push({
+      test: /\.md$/,
+      use: "raw-loader",
+    });
     config.resolve.alias["components"] = path.join(__dirname, "components");
     config.resolve.alias["public"] = path.join(__dirname, "public");
     return config;

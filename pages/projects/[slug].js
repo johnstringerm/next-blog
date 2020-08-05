@@ -1,28 +1,22 @@
-import fetch from "isomorphic-unfetch";
 import { Flex, Box } from "reflexbox";
 import { rem } from "polished";
 import styled from "@emotion/styled";
 const ReactMarkdown = require("react-markdown");
 import Moment from "react-moment";
-import { server } from "../../config";
+import matter from "gray-matter";
 
-const Project = ({ project }) => {
+const Project = (props) => {
+  const markdownBody = props.content;
+  const frontmatter = props.data;
   return (
     <Box variant="container" flexGrow="1">
       <ProjectStyled>
-        <h1>{project.title}</h1>
+        <h1>{frontmatter.title}</h1>
         <Moment className="date" format="Do MMM YYYY">
-          {project.publish_date}
+          {frontmatter.updatedAt}
         </Moment>
-        {/* {project.project_banner && (
-          <img
-            className="image"
-            src={server + project.project_banner.url}
-            alt=""
-          />
-        )} */}
-        <div className="description">{project.description}</div>
-        <ReactMarkdown source={project.text_content} />
+        <div className="description">{frontmatter.description}</div>
+        <ReactMarkdown source={markdownBody} />
       </ProjectStyled>
     </Box>
   );
@@ -48,17 +42,17 @@ const ProjectStyled = styled.div`
   }
 `;
 
-export async function getServerSideProps(context) {
+Project.getInitialProps = async function (context) {
   const { slug } = context.query;
-
-  const res = await fetch(`${server}/projects?slug=${slug}`);
-
-  const data = await res.json();
+  // grab the file in the posts dir based on the slug
+  const content = await import(`../../posts/projects/${slug}.md`);
+  // also grab the config file so we can pass down siteTitle
+  // const config = await import(`../../data/config.json`);
+  //gray-matter parses the yaml frontmatter from the md body
+  const data = matter(content.default);
   return {
-    props: {
-      project: data[0],
-    },
+    ...data,
   };
-}
+};
 
 export default Project;

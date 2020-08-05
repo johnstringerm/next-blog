@@ -5,17 +5,20 @@ import styled from "@emotion/styled";
 const ReactMarkdown = require("react-markdown");
 import Moment from "react-moment";
 import { server } from "../../config";
+import matter from "gray-matter";
 
-const Blogs = ({ blog }) => {
+const Blogs = (props) => {
+  const markdownBody = props.content;
+  const frontmatter = props.data;
   return (
     <Box variant="container" flexGrow="1">
       <ProjectStyled>
-        <h1>{blog.title}</h1>
+        <h1>{frontmatter.title}</h1>
         <Moment className="date" format="Do MMM YYYY">
-          {blog.publish_date}
+          {frontmatter.updatedAt}
         </Moment>
-        <div className="description">{blog.description}</div>
-        <ReactMarkdown source={blog.text_content} />
+        <div className="description">{frontmatter.description}</div>
+        <ReactMarkdown source={markdownBody} />
       </ProjectStyled>
     </Box>
   );
@@ -41,17 +44,17 @@ const ProjectStyled = styled.div`
   }
 `;
 
-export async function getServerSideProps(context) {
+Blogs.getInitialProps = async function (context) {
   const { slug } = context.query;
-
-  const res = await fetch(`${server}/blogs?slug=${slug}`);
-
-  const data = await res.json();
+  // grab the file in the posts dir based on the slug
+  const content = await import(`../../posts/blog/${slug}.md`);
+  // also grab the config file so we can pass down siteTitle
+  // const config = await import(`../../data/config.json`);
+  //gray-matter parses the yaml frontmatter from the md body
+  const data = matter(content.default);
   return {
-    props: {
-      blog: data[0],
-    },
+    ...data,
   };
-}
+};
 
 export default Blogs;

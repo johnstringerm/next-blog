@@ -1,24 +1,25 @@
-import fetch from "isomorphic-unfetch";
 import ProjectCard from "components/ProjectCard";
 import styled from "@emotion/styled";
 import { Flex, Box } from "reflexbox";
 import { useRouter } from "next/router";
-import { server } from "../config";
+import matter from "gray-matter";
 
-const Projects = ({ projects, page, numberOfProjects }) => {
+const Projects = (props, { projects, page, numberOfProjects }) => {
   const router = useRouter();
 
   const lastPage = Math.ceil(numberOfProjects / 3);
+
+  const posts = props.allProjects;
 
   return (
     <Box variant="container" flexGrow="1">
       <ProjectsStyled>
         <h1>Projects</h1>
-        {projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {posts.map((post) => (
+          <ProjectCard key={post.slug} project={post} />
         ))}
         <Flex justifyContent="space-between">
-          {page <= 1 ? null : (
+          {/* {page <= 1 ? null : (
             <button
               onClick={() => router.push(`/projects?page=${page - 1}`)}
               disabled={page <= 1}
@@ -34,7 +35,7 @@ const Projects = ({ projects, page, numberOfProjects }) => {
             >
               Next
             </button>
-          )}
+          )} */}
         </Flex>
       </ProjectsStyled>
     </Box>
@@ -47,24 +48,59 @@ const ProjectsStyled = styled.div`
   }
 `;
 
-export async function getServerSideProps({ query: { page = 1 } }) {
-  const start = +page === 1 ? 0 : (+page - 1) * 3;
+// export async function getServerSideProps({ query: { page = 1 } }) {
+//   const start = +page === 1 ? 0 : (+page - 1) * 3;
 
-  const numberOfProjectsResponse = await fetch(`${server}/projects/count`);
+//   const numberOfProjectsResponse = await fetch(`${server}/projects/count`);
 
-  const numberOfProjects = await numberOfProjectsResponse.json();
+//   const numberOfProjects = await numberOfProjectsResponse.json();
 
-  const res = await fetch(`${server}/projects?_limit=3&_start=${start}`);
+//   const res = await fetch(`${server}/projects?_limit=3&_start=${start}`);
 
-  const data = await res.json();
+//   const data = await res.json();
 
+//   return {
+//     props: {
+//       projects: data,
+//       page: +page,
+//       numberOfProjects,
+//     },
+//   };
+// }
+
+Projects.getInitialProps = async function () {
+  // const siteConfig = await import(`../data/config.json`)
+  // get all .md files from the src/posts dir
+  const posts = ((context) => {
+    // grab all the files matching this context
+    const keys = context.keys();
+    // grab the values from these files
+    const values = keys.map(context);
+    // go through each file
+    const data = keys.map((key, index) => {
+      // Create slug from filename
+      const slug = key
+        .replace(/^.*[\\\/]/, "")
+        .split(".")
+        .slice(0, -1)
+        .join(".");
+      // get the current file value
+      const value = values[index];
+      // Parse frontmatter & markdownbody for the current file
+      const document = matter(value.default);
+      // return the .md content & pretty slug
+      return {
+        document,
+        slug,
+      };
+    });
+    // return all the posts
+    return data;
+  })(require.context("../posts/projects", true, /\.md$/));
   return {
-    props: {
-      projects: data,
-      page: +page,
-      numberOfProjects,
-    },
+    allProjects: posts,
+    // ...siteConfig,
   };
-}
+};
 
 export default Projects;

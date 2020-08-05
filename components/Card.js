@@ -9,14 +9,14 @@ const Card = ({ blog }) => {
   return (
     <Link href="/blog/[slug]" as={`/blog/${blog.slug}`}>
       <CardStyled>
-        <div className="title">{blog.title}</div>
+        <div className="title">{blog.document.data.title}</div>
         <Moment className="date" format="Do MMM YYYY">
-          {blog.publish_date}
+          {blog.document.data.updatedAt}
         </Moment>
-        <div className="description">{blog.description}</div>
+        <div className="description">{blog.document.data.description}</div>
         <Flex justifyContent="space-between">
           <span className="more">Read More</span>
-          <div className="type">{blog.blog_types.type}</div>
+          <div className="type">{blog.document.data.type}</div>
         </Flex>
       </CardStyled>
     </Link>

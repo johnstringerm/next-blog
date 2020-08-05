@@ -2,24 +2,17 @@ import styled from "@emotion/styled";
 import { rem } from "polished";
 import Link from "next/link";
 import Moment from "react-moment";
-import { server } from "../config";
 
 const ProjectCard = ({ project }) => {
   return (
     <Link href="/projects/[slug]" as={`/projects/${project.slug}`}>
       <CardStyled>
-        <div className="title">{project.title}</div>
-        {project.project_banner && (
-          <img
-            className="image"
-            src={server + project.project_banner.url}
-            alt=""
-          />
-        )}
+        <div className="title">{project.document.data.title}</div>
+        <img className="image" src={project.document.data.hero_image} alt="" />
         <Moment className="date" format="Do MMM YYYY">
-          {project.publish_date}
+          {project.document.data.updatedAt}
         </Moment>
-        <div className="description">{project.description}</div>
+        <div className="description">{project.document.data.description}</div>
         <span className="more">Read More</span>
       </CardStyled>
     </Link>
