@@ -1,25 +1,28 @@
 import ProjectCard from "components/ProjectCard";
 import styled from "@emotion/styled";
 import { Flex, Box } from "reflexbox";
-import { useRouter } from "next/router";
 import matter from "gray-matter";
+import Head from "next/head";
 
-const Projects = (props, { projects, page, numberOfProjects }) => {
-  const router = useRouter();
-
-  const lastPage = Math.ceil(numberOfProjects / 3);
-
+const Projects = (props) => {
   const posts = props.allProjects;
 
   return (
-    <Box variant="container" flexGrow="1">
-      <ProjectsStyled>
-        <h1>Projects</h1>
-        {posts.map((post) => (
-          <ProjectCard key={post.slug} project={post} />
-        ))}
-        <Flex justifyContent="space-between">
-          {/* {page <= 1 ? null : (
+    <>
+      <Head>
+        <link
+          rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏆</text></svg>"
+        ></link>
+      </Head>
+      <Box variant="container" flexGrow="1">
+        <ProjectsStyled>
+          <h1>Projects</h1>
+          {posts.map((post) => (
+            <ProjectCard key={post.slug} project={post} />
+          ))}
+          <Flex justifyContent="space-between">
+            {/* {page <= 1 ? null : (
             <button
               onClick={() => router.push(`/projects?page=${page - 1}`)}
               disabled={page <= 1}
@@ -36,9 +39,10 @@ const Projects = (props, { projects, page, numberOfProjects }) => {
               Next
             </button>
           )} */}
-        </Flex>
-      </ProjectsStyled>
-    </Box>
+          </Flex>
+        </ProjectsStyled>
+      </Box>
+    </>
   );
 };
 
