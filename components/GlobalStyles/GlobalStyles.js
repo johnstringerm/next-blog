@@ -11,11 +11,11 @@ const GlobalStyles = () => (
           font-family: "Inter", system-ui, -apple-system, system-ui, "Segoe UI",
             Roboto, "Helvetica Neue", sans-serif;
         }
-        @font-face {
+        /* @font-face {
           font-family: "Inter";
           src: url("/fonts/Inter-Regular-slnt=0.ttf");
           font-display: swap;
-        }
+        } */
         body {
           font-size: ${rem(20)};
           line-height: ${rem(32)};

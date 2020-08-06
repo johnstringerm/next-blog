@@ -13,15 +13,15 @@ A website with more information is available at [www.harpy.app](https://www.harp
 
 ## What does it do?
 
-Harpy is a mobile app designed to improve your sleep by sending you useful notifications throughout the day to make sure you make the right steps to getting a better night of sleep.
+Harpy is a mobile app designed to improve your sleep by sending you useful notifications throughout the day to make sure you take the right steps to getting a better night's sleep.
 
   &nbsp;
 
-• Six hours before you go to sleep is sends you a notification telling you to stop having caffeine as this is the latest time you can ingest coffee without it affecting your sleep.
+• Six hours before you go to sleep the app notifies you to stop having caffeine as this is the latest time you can ingest coffee without it affecting your sleep.
 
   &nbsp;
 
-• Two hours before your set sleep time it sends you a notification to tell you to help you acknowledge that you need to start winding down.
+• Two hours before your set sleep time it notifies you to remind you to start winding down.
 
   &nbsp;
 
@@ -29,7 +29,7 @@ Harpy is a mobile app designed to improve your sleep by sending you useful notif
 
   &nbsp;
 
-• In the morning it sends you a good morning notification and turns your light on to help wake you up.
+• In the morning it sends you a good morning notification and turns your light on to help you wake up.
 
   &nbsp;
 
