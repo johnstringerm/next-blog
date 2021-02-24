@@ -21,7 +21,7 @@ const Resume = () => {
             <ResumeItem
               name="The Range"
               role="Junior Software Developer"
-              duration="October 2020 - Present"
+              duration="September 2020 - Present"
               description="After graduating university, I've started working at The Range - a multi-channel retailer as a Junior Software Developer working on internal applications."
             />
             <ResumeItem
