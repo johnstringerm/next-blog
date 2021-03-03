@@ -1,10 +1,27 @@
+import { useState, useEffect } from "react";
 import { Flex, Box } from "reflexbox";
 import styled from "@emotion/styled";
 import ResumeItem from "components/ResumeItem";
 import { rem } from "polished";
 import Head from "next/head";
 
-const Resume = () => {
+export const getExperience = async () => {
+  return await fetch(
+    "https://notion-api.splitbee.io/v1/table/b845e8ee1843447ca61df7d9b1ae5ce5?v=d00d1e657ba84e438a160d2d8caf8805"
+  ).then((res) => res.json());
+};
+
+export async function getStaticProps() {
+  const experience = await getExperience();
+
+  return {
+    props: {
+      experience,
+    },
+  };
+}
+
+const Resume = ({ experience }) => {
   return (
     <>
       <Head>
@@ -18,32 +35,29 @@ const Resume = () => {
           <h1>Resume</h1>
           <ResumeStyled>
             <div className="title">Experience</div>
-            <ResumeItem
-              name="The Range"
-              role="Junior Software Developer"
-              duration="September 2020 - Present"
-              description="After graduating university, I've started working at The Range - a multi-channel retailer as a Junior Software Developer working on internal applications."
-            />
-            <ResumeItem
-              name="Formell Ltd."
-              role="Junior Developer"
-              duration="September 2016 - June 2017"
-              description="During my A Levels I worked part time for a business software solutions company in Roborough."
-            />
+            {experience
+              .filter((item) => item.type.includes(1))
+              .map((item) => (
+                <ResumeItem
+                  name={item.title}
+                  role={item.role}
+                  duration={`${item.dateFrom} - ${item.dateTo}`}
+                  description={item.body}
+                  key={item.id}
+                />
+              ))}
 
             <div className="title">Education</div>
-            <ResumeItem
-              name="University of Plymouth"
-              role="Internet Design"
-              duration="September 2017- May 2020"
-              description="A course centered around designing web based applications such as websites and mobile applications from design to programming."
-            />
-            <ResumeItem
-              name="Ivybridge Community College"
-              role="A Levels & GCSEs"
-              duration="September 2011 - June 2016"
-              description="I studied ICT, Computing and Spanish during my A Level studies."
-            />
+            {experience
+              .filter((item) => item.type.includes(2))
+              .map((item) => (
+                <ResumeItem
+                  name={item.title}
+                  role={item.role}
+                  duration={`${item.dateFrom} - ${item.dateTo}`}
+                  description={item.body}
+                />
+              ))}
 
             <div className="title">Skills</div>
             <div className="text-content">
