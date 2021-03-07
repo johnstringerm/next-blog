@@ -10,7 +10,7 @@ const Blogs = ({ post, blocks }) => {
   return (
     <Box variant="container" flexGrow="1">
       <ProjectStyled>
-        <h1>{post.title}</h1>
+        <h1>{post.page}</h1>
         <Moment className="date" format="Do MMM YYYY">
           {post.date}
         </Moment>
