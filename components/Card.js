@@ -5,18 +5,17 @@ import Link from "next/link";
 import Moment from "react-moment";
 
 const Card = ({ blog }) => {
-  console.log(blog);
   return (
     <Link href="/blog/[slug]" as={`/blog/${blog.slug}`}>
-      <CardStyled>
-        <div className="title">{blog.document.data.title}</div>
+      <CardStyled key={blog.id}>
+        <div className="title">{blog.page}</div>
         <Moment className="date" format="Do MMM YYYY">
-          {blog.document.data.updatedAt}
+          {blog.date}
         </Moment>
-        <div className="description">{blog.document.data.description}</div>
+        <div className="description">{blog.preview}</div>
         <Flex justifyContent="space-between">
           <span className="more">Read More</span>
-          <div className="type">{blog.document.data.type}</div>
+          <div className="type">{blog.length}</div>
         </Flex>
       </CardStyled>
     </Link>

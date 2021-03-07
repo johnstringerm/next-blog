@@ -3,8 +3,24 @@ import { Flex, Box } from "reflexbox";
 import matter from "gray-matter";
 import Head from "next/head";
 
-const Blog = (props) => {
-  const posts = props.allBlogs;
+export const getBlogs = async () => {
+  return await fetch(
+    "https://notion-api.splitbee.io/v1/table/48dfa52cf16c4b698ccc53e29ba2fe32?v=e9a28f1589b44ab992d73846454867ed"
+  ).then((res) => res.json());
+};
+
+export async function getStaticProps() {
+  const blogs = await getBlogs();
+
+  return {
+    props: {
+      blogs,
+    },
+  };
+}
+
+const Blog = ({ blogs }) => {
+  // const posts = props.allBlogs;
 
   return (
     <>
@@ -17,7 +33,7 @@ const Blog = (props) => {
       <Box variant="container" flexGrow="1">
         <div className="">
           <h1>Blog</h1>
-          {posts.map((blog) => (
+          {blogs.map((blog) => (
             <Card key={blog.slug} blog={blog} />
           ))}
         </div>
@@ -65,39 +81,39 @@ const Blog = (props) => {
 //   };
 // }
 
-Blog.getInitialProps = async function () {
-  // const siteConfig = await import(`../data/config.json`)
-  // get all .md files from the src/posts dir
-  const posts = ((context) => {
-    // grab all the files matching this context
-    const keys = context.keys();
-    // grab the values from these files
-    const values = keys.map(context);
-    // go through each file
-    const data = keys.map((key, index) => {
-      // Create slug from filename
-      const slug = key
-        .replace(/^.*[\\\/]/, "")
-        .split(".")
-        .slice(0, -1)
-        .join(".");
-      // get the current file value
-      const value = values[index];
-      // Parse frontmatter & markdownbody for the current file
-      const document = matter(value.default);
-      // return the .md content & pretty slug
-      return {
-        document,
-        slug,
-      };
-    });
-    // return all the posts
-    return data;
-  })(require.context("../posts/blog", true, /\.md$/));
-  return {
-    allBlogs: posts,
-    // ...siteConfig,
-  };
-};
+// Blog.getInitialProps = async function () {
+//   // const siteConfig = await import(`../data/config.json`)
+//   // get all .md files from the src/posts dir
+//   const posts = ((context) => {
+//     // grab all the files matching this context
+//     const keys = context.keys();
+//     // grab the values from these files
+//     const values = keys.map(context);
+//     // go through each file
+//     const data = keys.map((key, index) => {
+//       // Create slug from filename
+//       const slug = key
+//         .replace(/^.*[\\\/]/, "")
+//         .split(".")
+//         .slice(0, -1)
+//         .join(".");
+//       // get the current file value
+//       const value = values[index];
+//       // Parse frontmatter & markdownbody for the current file
+//       const document = matter(value.default);
+//       // return the .md content & pretty slug
+//       return {
+//         document,
+//         slug,
+//       };
+//     });
+//     // return all the posts
+//     return data;
+//   })(require.context("../posts/blog", true, /\.md$/));
+//   return {
+//     allBlogs: posts,
+//     // ...siteConfig,
+//   };
+// };
 
 export default Blog;

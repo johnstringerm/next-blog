@@ -2,23 +2,20 @@ import fetch from "isomorphic-unfetch";
 import { Box } from "reflexbox";
 import { rem } from "polished";
 import styled from "@emotion/styled";
-const ReactMarkdown = require("react-markdown");
 import Moment from "react-moment";
-import { server } from "../../config";
-import matter from "gray-matter";
+import { NotionRenderer } from "react-notion";
+import { getBlogs } from "../blog";
 
-const Blogs = (props) => {
-  const markdownBody = props.content;
-  const frontmatter = props.data;
+const Blogs = ({ post, blocks }) => {
   return (
     <Box variant="container" flexGrow="1">
       <ProjectStyled>
-        <h1>{frontmatter.title}</h1>
+        <h1>{post.title}</h1>
         <Moment className="date" format="Do MMM YYYY">
-          {frontmatter.updatedAt}
+          {post.date}
         </Moment>
-        <div className="description">{frontmatter.description}</div>
-        <ReactMarkdown source={markdownBody} />
+        <div className="description">{post.preview}</div>
+        <NotionRenderer blockMap={blocks} />
       </ProjectStyled>
     </Box>
   );
@@ -44,17 +41,44 @@ const ProjectStyled = styled.div`
   }
 `;
 
-Blogs.getInitialProps = async function (context) {
-  const { slug } = context.query;
-  // grab the file in the posts dir based on the slug
-  const content = await import(`../../posts/blog/${slug}.md`);
-  // also grab the config file so we can pass down siteTitle
-  // const config = await import(`../../data/config.json`);
-  //gray-matter parses the yaml frontmatter from the md body
-  const data = matter(content.default);
+export async function getStaticProps({ params: { slug } }) {
+  // Get all posts again
+  const posts = await getBlogs();
+  // Find the current blogpost by slug
+  const post = posts.find((t) => t.slug === slug);
+  const blocks = await fetch(
+    `https://notion-api.splitbee.io/v1/page/${post.id}`
+  ).then((res) => res.json());
+
+  if (!posts) {
+    return {
+      notFound: true,
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
   return {
-    ...data,
+    props: {
+      blocks,
+      post,
+    },
   };
-};
+}
+
+export async function getStaticPaths() {
+  const blogs = await getBlogs();
+
+  const paths = blogs.map((blog) => ({
+    params: { slug: blog.slug },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+}
 
 export default Blogs;
