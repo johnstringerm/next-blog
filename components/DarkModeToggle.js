@@ -1,15 +1,12 @@
 import React from "react";
-import useDarkMode from "use-dark-mode";
 import styled from "@emotion/styled";
 
 import Toggle from "./Toggle";
 
 const DarkModeToggle = () => {
-  const darkMode = useDarkMode(false);
-
   return (
     <DivStyled>
-      <Toggle checked={darkMode.value} />
+      <Toggle />
     </DivStyled>
   );
 };

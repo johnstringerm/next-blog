@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import useDarkMode from "use-dark-mode";
 
-const Toggle = ({ checked }) => {
+export const useLoaded = () => {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => setLoaded(true), []);
+  return loaded;
+};
+
+const Toggle = () => {
   const darkMode = useDarkMode(false);
+  const loaded = useLoaded();
 
   return (
     <>
-      {checked ? (
+      {darkMode.value && loaded ? (
         <button type="button" onClick={darkMode.disable}>
           <i>
             <svg
